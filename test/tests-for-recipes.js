@@ -1,4 +1,4 @@
-onst chai = require("chai");
+const chai = require("chai");
 const chaiHttp = require("chai-http");
 
 const { app, runServer, closeServer } = require("../server");
@@ -49,12 +49,12 @@ describe("Recipes", function() {
   //  1. make a POST request with data for a new item
   //  2. inspect response object and prove it has right
   //  status code and that the returned object has an `id`
-  it("should add an item on POST", function() {
-    const newItem = { name: "Latte", ingredients: ["espresso", "milk"]};
+  it("should add a recipe on POST", function() {
+    const newRecipe = { name: "Latte", ingredients: ["espresso", "milk"]};
     return chai
       .request(app)
       .post("/recipes")
-      .send(newItem)
+      .send(newRecipe)
       .then(function(res) {
         expect(res).to.have.status(201);
         expect(res).to.be.json;
@@ -64,7 +64,7 @@ describe("Recipes", function() {
         // response should be deep equal to `newItem` from above if we assign
         // `id` to it from `res.body.id`
         expect(res.body).to.deep.equal(
-          Object.assign(newItem, { id: res.body.id })
+          Object.assign(newItem, { id: res.body.id }) //ISSUES HERE NEED TO REVIEW
         );
       });
   });
@@ -135,3 +135,7 @@ describe("Recipes", function() {
     );
   });
 });
+
+
+//would this file normally be merged with other file
+//how do i run these tests? just npm test?
