@@ -137,10 +137,10 @@ describe("Recipes", function() {
           .send(updateData)
       })
       .then(function(res) {
-        res.should.have.status(204);
+         expect(res).to.have.status(204);
       });
   });
- 
+
 
    // test strategy:
   //  1. GET shopping list items so we can get ID of one
@@ -157,7 +157,7 @@ describe("Recipes", function() {
           return chai.request(app).delete(`/recipes/${res.body[0].id}`);
         })
         .then(function(res) {
-          expect(res).to.have.status(204);
+         expect(res).to.have.status(204);
         })
     );
   });
