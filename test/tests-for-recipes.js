@@ -64,7 +64,7 @@ describe("Recipes", function() {
         // response should be deep equal to `newItem` from above if we assign
         // `id` to it from `res.body.id`
         expect(res.body).to.deep.equal(
-          Object.assign(newItem, { id: res.body.id }) //ISSUES HERE NEED TO REVIEW
+          Object.assign(newRecipe, { id: res.body.id }) //ISSUES HERE NEED TO REVIEW
         );
       });
   });
